@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.mrntlu.bisu.ui.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_newsDetailScreen"
+            app:destination="@id/newsDetailScreen"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.mrntlu.bisu.ui.FavouriteFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/newsDetailScreen"
+        android:name="com.mrntlu.bisu.ui.NewsDetailScreen"
+        android:label="fragment_news_detail_screen"
+        tools:layout="@layout/fragment_news_detail_screen" />
+
+</navigation>

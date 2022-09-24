@@ -9,11 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mrntlu.bisu.databinding.FragmentFavouriteBinding
 
-class FavouriteFragment : Fragment() {
-
-    private var _binding: FragmentFavouriteBinding? = null
-    private val binding get() = _binding!!
-
+class FavouriteFragment : BaseFragment<FragmentFavouriteBinding>() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,10 +21,5 @@ class FavouriteFragment : Fragment() {
         val textView: TextView = binding.textDashboard
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

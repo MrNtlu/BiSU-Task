@@ -2,4 +2,8 @@
     <string name="app_name">BisuDevChallange</string>
     <string name="title_home">Home</string>
     <string name="title_favourites">Favourites</string>
+    <string name="refresh">Refresh</string>
+    <string name="error_occured">Error Occured</string>
+    <string name="loading_">Loading...</string>
+    <string name="loading_more_">Loading More...</string>
 </resources>

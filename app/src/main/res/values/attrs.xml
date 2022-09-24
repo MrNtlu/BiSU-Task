@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <attr name="layoutBackgroundColor" format="color"/>
+        <attr name="toolbarBackgroundColor" format="color"/>
+        <attr name="toolbarTintColor" format="color"/>
+        <attr name="contentTextColor" format="color"/>
+        <attr name="contentBackgroundColor" format="color"/>
+        <attr name="titleTextColor" format="color"/>
+    </declare-styleable>
+</resources>
