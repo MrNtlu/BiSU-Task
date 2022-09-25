@@ -1,7 +1,7 @@
 # BiSU Android Developer Challange - Burak Fidan
 
-Language: Kotlin
-Software Architecture: MVVM
+* Language: Kotlin
+* Software Architecture: MVVM
 
 ## 3rd Party Libraries:
 
@@ -9,7 +9,7 @@ Software Architecture: MVVM
 * Retrofit
 * OkHttp
 * Dagger Hilt
-* Coil (Image Loading)
+* Glide (Image Loading)
 * Coroutines
 * Jetpack Navigation
 * Paging 3

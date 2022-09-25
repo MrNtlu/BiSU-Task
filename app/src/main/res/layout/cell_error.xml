@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/layoutBackgroundColor"
+    android:background="?attr/mainBackgroundColor"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageButton
@@ -14,11 +14,11 @@
         android:layout_marginEnd="8dp"
         android:backgroundTint="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:tint="?attr/contentTextColor"
+        app:tint="?attr/accessoryTextColor"
         android:src="@drawable/ic_refresh_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:contentDescription="@string/refresh" />
+        android:contentDescription="@string/refresh" />
 
     <TextView
         android:id="@+id/errorText"
@@ -30,7 +30,7 @@
         android:fontFamily="serif-monospace"
         android:text="@string/error_occured"
         android:textAlignment="center"
-        android:textColor="?attr/contentTextColor"
+        android:textColor="?attr/accessoryTextColor"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

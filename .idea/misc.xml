@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/activity_main.xml" value="0.55" />
+        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/drawable/bottom_nav_selector.xml" value="0.1835" />
+        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/drawable/ic_dark_theme_24.xml" value="0.3975" />
+        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/activity_main.xml" value="0.3962900505902192" />
+        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/bottom_nav_badge.xml" value="0.5405128205128205" />
         <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/cell_error.xml" value="0.33" />
         <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/cell_loading.xml" value="0.45042735042735044" />
         <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/cell_news_item.xml" value="0.55" />
@@ -14,6 +17,8 @@
         <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/fragment_news_detail_screen.xml" value="0.45193929173693087" />
         <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/layout/fragment_notifications.xml" value="0.55" />
         <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/menu/bottom_nav_menu.xml" value="0.55" />
+        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/menu/toolbar_menu.xml" value="0.5489583333333333" />
+        <entry key="..\:/Users/mrntl/Desktop/AndroidStudioProjects/BisuDevChallange/app/src/main/res/xml/network_security_config.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/contentBackgroundColor">
+    android:background="?attr/mainBackgroundColor">
 
     <ProgressBar
         android:id="@+id/paginationProgress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="?attr/contentTextColor"
+        android:indeterminateTint="?attr/progressColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/loading_"
-        android:textColor="?attr/contentTextColor"
+        android:textColor="?attr/accessoryTextColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/paginationProgress"
         app:layout_constraintStart_toStartOf="@+id/paginationProgress"

@@ -3,7 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_favourites">Favourites</string>
     <string name="refresh">Refresh</string>
-    <string name="error_occured">Error Occured</string>
-    <string name="loading_">Loading...</string>
-    <string name="loading_more_">Loading More...</string>
+    <string name="error_occured">Error Occurred</string>
+    <string name="loading_">Loading…</string>
+    <string name="loading_more_">Loading More…</string>
+    <string name="favourite_toggle_button">Favourite Toggle Button</string>
+    <string name="theme_selection">Theme Selection</string>
+    <string name="retry">Retry</string>
 </resources>

@@ -11,15 +11,18 @@ abstract class BaseFragment<T>: Fragment() {
     protected val binding get() = _binding!!
 
     protected lateinit var navController: NavController
+    protected var isViewDestroyed = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+        isViewDestroyed = false
     }
 
     // To prevent memory leak
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        isViewDestroyed = true
     }
 }

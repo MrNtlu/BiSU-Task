@@ -6,6 +6,7 @@ import androidx.paging.cachedIn
 import com.mrntlu.bisu.models.response.Article
 import com.mrntlu.bisu.repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,5 +15,5 @@ class NewsViewModel @Inject constructor(
 ): ViewModel() {
     fun getBreakingNews(
         country: String = "us",
-    ): LiveData<PagingData<Article>> =repository.getBreakingNews(country).cachedIn(viewModelScope)
+    ): Flow<PagingData<Article>> = repository.getBreakingNews(country).cachedIn(viewModelScope)
 }

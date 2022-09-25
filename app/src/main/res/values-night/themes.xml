@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.BisuDevChallange" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -12,12 +12,24 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/toolbarBackgroundColor</item>
 
-        <item name="layoutBackgroundColor">@color/grey500</item>
-        <item name="toolbarBackgroundColor">@color/materialBlack</item>
-        <item name="contentBackgroundColor">@color/materialBlack</item>
+        <item name="titleTextColor">@color/darkWhite</item>
 
-        <item name="contentTextColor">@color/white</item>
-        <item name="toolbarTintColor">@color/white</item>
-        <item name="titleTextColor">@color/white</item>
+        <item name="mainBackgroundColor">@color/materialBlack</item>
+        <item name="mainTextColor">@color/white</item>
+        <item name="subTextColor">@color/darkWhite</item>
+
+        <item name="accessoryTextColor">@color/darkWhite</item>
+        <item name="progressColor">@color/darkWhite</item>
+
+        <item name="toolbarBackgroundColor">@color/black</item>
+        <item name="bottomNavBackgroundColor">@color/black</item>
+        <item name="bottomNavSelectedColor">@color/purple_200</item>
+        <item name="bottomNavUnselectedColor">@color/materialBlack</item>
+    </style>
+
+    <style name="Theme.BisuDevChallange.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/black</item>
+        <item name="android:textColorPrimary">@color/darkWhite</item>
+        <item name="iconTint">@color/darkWhite</item>
     </style>
 </resources>
