@@ -12,6 +12,8 @@
 
 * Language: Kotlin
 * Software Architecture: MVVM
+* News API: newsapi.org
+* Dependency Injection: Dagger Hilt
 
 ## 3rd Party Libraries:
 
