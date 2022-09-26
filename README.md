@@ -6,7 +6,7 @@
 * Extras
 * * **[Dark Theme](#dark-theme)**
 * * **[Real Time Favourite Tracking and Multiple Country Support](#real-time-favourite-tracking-and-multiple-country-support)**
-* **[Final Notes](#final-notes)**
+* **[Important Notes](#important-notes)**
 
 ## Basic Info
 
@@ -33,4 +33,11 @@ https://user-images.githubusercontent.com/25686023/192276708-577f9e75-eab5-489a-
 
 https://user-images.githubusercontent.com/25686023/192276870-9f14b281-3554-4463-8085-c6e56872754f.mp4
 
-## Final Notes
+## Important Notes
+* There is a delay on the [News Api Request](https://github.com/MrNtlu/BiSU-Task/blob/5e3b6ebc62485e9e14597c3102aee881240626f4/app/src/main/java/com/mrntlu/bisu/models/NewsPagingSource.kt#L29) to show "Login Screen" longer and better.
+
+* I've used the Jetpack Compose for News Detail Screen. [Composable File](https://github.com/MrNtlu/BiSU-Task/blob/5e3b6ebc62485e9e14597c3102aee881240626f4/app/src/main/java/com/mrntlu/bisu/ui/composeable/NewsDetail.kt)
+
+* For some reason on the latest version of the Android Emulator, Firebase doesn't work, it cannot connect to the servers. I had to downgrade to version [31.2.9](https://developer.android.com/studio/emulator_archive). I also tested on Physical device and there wasn't any issue. If you encounter any problems please let me know.
+
+* google-services.json file is hidden. It will be provided externally.
