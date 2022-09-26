@@ -15,7 +15,6 @@ class FavouritesRepository @Inject constructor(
     private val db: DatabaseReference
 ) {
 
-    //TODO: Generate a UUID on init and save to pref
     private val _currentUID
         get() = auth.currentUser?.uid ?: UUID.randomUUID().toString()
 

@@ -1,5 +1,7 @@
 package com.mrntlu.bisu.models.response
 
+import android.os.Bundle
+import androidx.core.os.bundleOf
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
 
@@ -21,10 +23,22 @@ data class Article(
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "author" to author,
-            "title" to title,
+            "content" to content,
             "description" to description,
             "publishedAt" to publishedAt,
             "source" to source,
+            "title" to title,
+            "url" to url,
+            "urlToImage" to urlToImage,
+        )
+    }
+    @Exclude
+    fun toBundle(): Bundle{
+        return bundleOf(
+            "author" to author,
+            "content" to content,
+            "description" to description,
+            "publishedAt" to publishedAt,
             "title" to title,
             "url" to url,
             "urlToImage" to urlToImage,

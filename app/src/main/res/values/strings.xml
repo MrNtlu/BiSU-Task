@@ -9,4 +9,7 @@
     <string name="favourite_toggle_button">Favourite Toggle Button</string>
     <string name="theme_selection">Theme Selection</string>
     <string name="retry">Retry</string>
+    <string name="nothing_in_here_yet">Nothing in here yet.</string>
+    <string name="empty_image">Empty Image</string>
+    <string name="country_flag">Country Flag</string>
 </resources>

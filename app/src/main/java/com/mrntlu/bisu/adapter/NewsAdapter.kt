@@ -18,7 +18,7 @@ class NewsAdapter(
     private val interaction: Interaction<Article>,
 ): PagingDataAdapter<Article, NewsAdapter.NewsItemViewHolder>(Comparator) {
 
-    private val favSet: MutableSet<Article> = mutableSetOf()
+    private val favSet: MutableSet<String> = mutableSetOf()
     private var isFavListInit = false
 
     object Comparator : DiffUtil.ItemCallback<Article>() {
@@ -42,7 +42,7 @@ class NewsAdapter(
     override fun onBindViewHolder(holder: NewsItemViewHolder, position: Int) {
         getItem(position)?.let { article ->
             holder.binding.apply {
-                val isFavAdded = favSet.map { it.url }.contains(article.url)
+                val isFavAdded = favSet.contains(article.url)
 
                 titleText.text = article.title
                 descriptionText.text = article.description
@@ -74,38 +74,39 @@ class NewsAdapter(
         }
     }
 
-    fun submitFavouriteListUpdated(favouriteList: ArrayList<Article>) {
+    fun submitFavouriteListUpdated(favouriteList: List<String>) {
         if (!isFavListInit) {
             favSet.addAll(favouriteList)
 
             snapshot().items.forEachIndexed { index, article ->
-                if (favSet.map { it.url }.contains(article.url)) {
+                if (favSet.contains(article.url)) {
                     notifyItemChanged(index)
                 }
             }
 
             isFavListInit = true
         } else {
-            val tempFavSet = favSet.map { it.url }
-            val tempFavList = favouriteList.map { it.url }
+            // Cloning the list to prevent ConcurrentModificationException
+            val tempFavSet = favSet.toMutableList()
+            val tempFavList = favouriteList.toMutableList()
 
-            //To check removed favs
-            tempFavSet.forEachIndexed { index, article ->
+            tempFavSet.forEachIndexed { index, article -> // Check removed favs
                 if (!tempFavList.contains(article)) {
                     favSet.remove(favSet.elementAt(index))
                     notifyItemChanged(snapshot().items.map { it.url }.indexOf(article))
+                    return
                 }
             }
 
-            //To check added favs
-            tempFavList.forEachIndexed { index, article ->
+            tempFavList.forEachIndexed { index, article -> // Check added favs
                 if (!tempFavSet.contains(article)) {
                     favSet.add(favouriteList[index])
                     notifyItemChanged(snapshot().items.map { it.url }.indexOf(article))
+                    return
                 }
             }
         }
     }
 
-    inner class NewsItemViewHolder(val binding: CellNewsItemBinding): RecyclerView.ViewHolder(binding.root)
+    class NewsItemViewHolder(val binding: CellNewsItemBinding): RecyclerView.ViewHolder(binding.root)
 }

@@ -16,6 +16,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.mrntlu.bisu.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun showToast(context: Context?, message: String) = Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
 
@@ -48,6 +50,13 @@ fun View.setVisible(){
 
 fun String.getAsPureString(): String {
     return filter { it.isLetterOrDigit() }
+}
+
+fun String.getStringAsDate(): String {
+    val date = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss", Locale.getDefault())
+    val readableDate = SimpleDateFormat("MMM dd',' yy 'at' HH:mm", Locale.getDefault())
+    val parsedDate = date.parse(this)
+    return parsedDate?.let { readableDate.format(it) } ?: this
 }
 
 fun ImageView.loadWithGlide(imageUrl:String,progressBar: ProgressBar) =

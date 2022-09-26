@@ -30,7 +30,4 @@ render.experimental.xml
 google-services.json
 
 # Android Profiling
-*.hprof
-
-# Api Key
-src/main/java/com/mrntlu/bisu/util/Constants.kt
+*.hprof\

@@ -25,9 +25,8 @@ class NewsPagingSource @Inject constructor(
         return try {
             val response = newsApiService.getBreakingNews(query, page)
 
-            //TODO: To test and showcase
-            //TODO: REMOVE!
-            delay(1200L)
+            //TODO: To test and showcase, can be removed
+            delay(500L)
 
             LoadResult.Page(
                 data = response.articles,

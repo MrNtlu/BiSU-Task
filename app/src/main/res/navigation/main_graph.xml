@@ -23,11 +23,19 @@
         android:id="@+id/navigation_favourites"
         android:name="com.mrntlu.bisu.ui.FavouriteFragment"
         android:label="@string/title_favourites"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite" >
+        <action
+            android:id="@+id/action_navigation_favourites_to_newsDetailScreen"
+            app:destination="@id/newsDetailScreen"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/newsDetailScreen"
         android:name="com.mrntlu.bisu.ui.NewsDetailScreen"
-        android:label="fragment_news_detail_screen"
+        android:label="News Detail"
         tools:layout="@layout/fragment_news_detail_screen" />
 
 </navigation>

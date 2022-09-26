@@ -31,5 +31,6 @@
         <item name="android:background">@color/purple_500</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="iconTint">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
 </resources>

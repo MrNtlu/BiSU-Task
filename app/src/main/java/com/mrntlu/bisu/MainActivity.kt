@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -25,13 +26,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    // TODO:
-    // Add screenshots
-    // https://github.com/ronnieotieno/Android-Paging-3-with-MVVM-Retrofit-and-Flow
-    // MVVM https://www.youtube.com/watch?v=tofZ3YTR_zY&ab_channel=Bersyte
-
     private val viewModel: MainActivityViewModel by viewModels()
     private val favsViewModel: FavouritesViewModel by viewModels()
+    private lateinit var navController: NavController
     private lateinit var prefs: SharedPreferences
 
     private lateinit var binding: ActivityMainBinding
@@ -46,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_favourites
@@ -95,6 +92,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.topAppbar.menu.getItem(0).isVisible = destination.id != R.id.newsDetailScreen
+        }
+
+        binding.topAppbar.setNavigationOnClickListener {
+            navController.popBackStack()
+        }
+
         binding.topAppbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.toggleTheme -> {

@@ -10,12 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mrntlu.bisu.R
+import com.mrntlu.bisu.adapter.CountrySelectionAdapter
 import com.mrntlu.bisu.adapter.NewsAdapter
 import com.mrntlu.bisu.adapter.NewsLoadingAdapter
 import com.mrntlu.bisu.databinding.FragmentHomeBinding
 import com.mrntlu.bisu.interfaces.Interaction
 import com.mrntlu.bisu.models.response.Article
-import com.mrntlu.bisu.util.printLog
 import com.mrntlu.bisu.viewmodel.FavouritesViewModel
 import com.mrntlu.bisu.viewmodel.NewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,13 +26,12 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-
-    //TODO: Implement Country Selection
-    // Chip cells with country flag
     private val viewModel: NewsViewModel by viewModels()
     private val favsViewModel: FavouritesViewModel by viewModels()
     private var newsAdapter: NewsAdapter? = null
+    private var countrySelectionAdapter: CountrySelectionAdapter? = null
     private var newsJob: Job? = null
+    private var newsCountry = "us"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +47,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         setListener()
         setRecyclerView()
+        setCountryChipRecyclerView()
         setObserver()
     }
 
@@ -61,7 +62,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
             newsAdapter = NewsAdapter(object: Interaction<Article> {
                 override fun onItemSelected(position: Int, item: Article) {
-                    printLog(message = "Item Selected $position $item")
+                    val bundle = item.toBundle()
+                    navController.navigate(R.id.action_navigation_home_to_newsDetailScreen, bundle)
                 }
 
                 override fun onFavTogglePressed(position: Int, item: Article, isFavAdded: Boolean) {
@@ -99,23 +101,38 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
+    private fun setCountryChipRecyclerView() {
+        binding.countryChipRV.apply {
+            val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = linearLayoutManager
+            countrySelectionAdapter = CountrySelectionAdapter(newsCountry) { code ->
+                countrySelectionAdapter?.changeSelection(code)
+                newsCountry = code
+                favsViewModel.onDestroy()
+                setObserver()
+            }
+            adapter = countrySelectionAdapter
+        }
+    }
+
     private fun setObserver() {
         newsJob?.cancel()
 
         newsJob = lifecycleScope.launch {
-            viewModel.getBreakingNews().collectLatest {
+            viewModel.getBreakingNews(newsCountry).collectLatest {
                 newsAdapter?.submitData(it)
             }
         }
 
         favsViewModel.getAllFavouritesAndSetListener().observe(viewLifecycleOwner) { favourites ->
-            newsAdapter?.submitFavouriteListUpdated(favourites)
+            newsAdapter?.submitFavouriteListUpdated(favourites.map { it.url })
         }
     }
 
     // To prevent memory leak
     override fun onDestroyView() {
         newsAdapter = null
+        countrySelectionAdapter = null
         newsJob?.cancel()
         newsJob = null
         favsViewModel.onDestroy()
