@@ -10,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import com.mrntlu.bisu.R
 import com.mrntlu.bisu.adapter.CountrySelectionAdapter
 import com.mrntlu.bisu.adapter.NewsAdapter
@@ -26,11 +29,13 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+
     private val viewModel: NewsViewModel by viewModels()
     private val favsViewModel: FavouritesViewModel by viewModels()
     private var newsAdapter: NewsAdapter? = null
     private var countrySelectionAdapter: CountrySelectionAdapter? = null
     private var newsJob: Job? = null
+    private val firebaseAnalytics = Firebase.analytics
     private var newsCountry = "us"
 
     override fun onCreateView(
@@ -71,6 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         favsViewModel.deleteFavouriteNews(item.url)
                     } else {
                         favsViewModel.addNewFavouriteNews(item)
+                        sendAnalyticsLog(item.url, item.title)
                     }
                 }
 
@@ -126,6 +132,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         favsViewModel.getAllFavouritesAndSetListener().observe(viewLifecycleOwner) { favourites ->
             newsAdapter?.submitFavouriteListUpdated(favourites.map { it.url })
+        }
+    }
+
+    private fun sendAnalyticsLog(url: String, title: String) {
+        firebaseAnalytics.logEvent("fav_added") {
+            param("url", url)
+            param("title", title)
         }
     }
 
